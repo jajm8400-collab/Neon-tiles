@@ -17,9 +17,6 @@ jobs:
           java-version: 21
       - working-directory: neon-tiles-app
         run: |
-          mkdir -p www/models
-          curl -L --fail --retry 3 -o www/models/beat_this.onnx "https://huggingface.co/ashudesai/songbird-models/resolve/main/final0-v2.onnx"
-          echo "b2ec76f2b1e7499b5db0dee58a22bdca50c9164c0d2c179295d93b7926d5b18f  www/models/beat_this.onnx" | sha256sum -c
           npm ci
           npx cap sync android
           cd android && chmod +x gradlew && ./gradlew assembleDebug --no-daemon
